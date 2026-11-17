@@ -117,12 +117,14 @@ const CHARS: &[char] = &[
     'm', 'n', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
 ];
 
-// UPRA self-hosted infrastructure (Under Protection).
-// Deploy hbbs/hbbr (RustDesk Server OSS) at rs.upn-ng.io — rendezvous 21116,
-// relay 21117, WebSocket 21118/21119 — then replace RS_PUB_KEY with the content
-// of the hbbs-generated id_ed25519.pub. Until then the client cannot register.
-pub const RENDEZVOUS_SERVERS: &[&str] = &["rs.upn-ng.io"];
-pub const RS_PUB_KEY: &str = "OeVuKk5nlHiXp+APNn0Y3pC1Iwpwn44JGqrQCsWqmBw="; // TODO(UP): replace with UP hbbs public key
+// UPRA self-hosted infrastructure (Under Protection) — hbbs/hbbr em produção no
+// SMLBRSVP05 (10.35.1.6, Docker: /opt/upra/rustdesk-server, compose "upra-server").
+// Rendezvous 21116 (tcp+udp), relay 21117, NAT test 21115, WebSocket 21118/21119.
+// O DNS rs.upn-ng.io ainda não existe; quando criarem (DNS interno), trocar o IP
+// pelo hostname aqui e recompilar — ou apontar via custom-rendezvous-server.
+pub const RENDEZVOUS_SERVERS: &[&str] = &["10.35.1.6"];
+// Chave pública do hbbs em produção (id_ed25519.pub do SMLBRSVP05)
+pub const RS_PUB_KEY: &str = "t2AbWKdXSDc0faoYoOWwFk3yaynyl49jpAnt44q1iBU=";
 
 pub const RENDEZVOUS_PORT: i32 = 21116;
 pub const RELAY_PORT: i32 = 21117;
